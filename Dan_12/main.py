@@ -1,4 +1,4 @@
-#PYTHON DAN 10
+#PYTHON DAN 12
 #! Scope
 ################### Scope ####################
 
