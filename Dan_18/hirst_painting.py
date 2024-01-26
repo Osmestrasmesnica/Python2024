@@ -57,9 +57,13 @@ t.colormode(255)
 ori.shape('turtle')
 ori.color("dark green")
 ori.resizemode("auto")
+ori.hideturtle()
 ori.speed(0)
-a = 0
-b = 0
+a = -200
+b = -300
+ori.penup()
+ori.setposition(a, b)
+ori.pendown()
 
 def circle():
     ori.dot(20, random.choice(color_list))
