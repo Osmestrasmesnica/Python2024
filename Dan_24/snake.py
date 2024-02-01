@@ -1,9 +1,10 @@
 from turtle import Turtle
 
-DOWN = 270
-UP = 90
+# Varijable/Konstante
 RIGHT = 0
+UP = 90
 LEFT = 180
+DOWN = 270
 STARTING_POSITION = [(0,0), (-20,0), (-40,0)] #konstanta se pise velikim slovima, ovo je bolji metod od for i sto sam ja pisao prvo
 MOVE_DISTANCE = 20 # konstanta kojom se zmija krece, jer ako hocemo da se pomera brze onda samo ovo menjamo
 
@@ -20,6 +21,16 @@ class Snake:
         for position in STARTING_POSITION:
             self.add_segment(position)
 
+    def add_segment(self, position):
+        body_part = Turtle("square")
+        body_part.penup()
+        body_part.color('red')
+        body_part.goto(position)
+        self.snake_body.append(body_part)
+
+    def extend(self):
+        """add a new segment to the snake. [-1] ti u listi daje poslednju stvar u listi"""
+        self.add_segment(self.snake_body[-1].position())
     
     def move(self):
         """Make Snake Move, and make tail follow head position"""
@@ -52,14 +63,15 @@ class Snake:
 
     def cheat(self):
         self.snake_body[0].goto(0,0)
-        
-    def add_segment(self, position):
-            body_part = Turtle("square")
-            body_part.penup()
-            body_part.color('red')
-            body_part.goto(position)
-            self.snake_body.append(body_part)
 
-    def extend(self):
-        #add a new segment to the snake. [-1] ti u listi daje poslednju stvar u listi
-        self.add_segment(self.snake_body[-1].position())
+    def reset(self):
+        """Resetujemo zmiju kao na pocetku kada je __init__"""
+        for segment in self.snake_body:
+            segment.goto(1000, 1000)
+            segment.hideturtle()
+        self.snake_body.clear() # clear the list
+        self.create_snake()
+        self.head = self.snake_body[0]
+        self.head.showturtle()
+        
+
