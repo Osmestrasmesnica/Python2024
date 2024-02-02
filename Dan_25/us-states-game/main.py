@@ -30,13 +30,15 @@ while len(broj_pogodaka) < len(all_states):
     
     # ako je u input Exit, izlazimo iz loopa
     if answer_state == "Exit":
-        missing_states = []
-        for state in all_states: # --> za svaku drzavu u list svih drzava
-            if state not in broj_pogodaka: # --> ako nema drzave u listi pogodaka
-                missing_states.append(state) # --> dodajemo u novu listu
+        # missing_states = []
+        # for state in all_states: # --> za svaku drzavu u list svih drzava
+        #     if state not in broj_pogodaka: # --> ako nema drzave u listi pogodaka
+        #         missing_states.append(state) # --> dodajemo u novu listu
+        missing_states = [state for state in broj_pogodaka if state not in missing_states]
         new_data = pandas.DataFrame(missing_states) # --> pravimo od nove liste nov csv sa spiskom onih drzava koje nismo pogodili
         new_data.to_csv("Dan_25/us-states-game/states_to_learn.csv")
         break # --> izlazimo iz while loopa da bi videli lepo mapu
+
     
     # Provera da nisi vec istu drzavu
     if answer_state in broj_pogodaka:
