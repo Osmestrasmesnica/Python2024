@@ -38,7 +38,7 @@ input.insert(END, string="Placeholder text...")
 print(input.get()) # --> uzimas input kao string
 input.pack()
 
-#!Text
+#!Textbox
 text = Text(height=4, width=50)
 #Puts cursor in textbox.
 text.focus()
