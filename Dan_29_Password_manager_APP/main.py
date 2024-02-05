@@ -100,6 +100,4 @@ generate_password_btn.grid(row= 3,column=2)
 add_btn = Button(text="Add", width= 36, highlightthickness=0, background=YELLOW, fg=GREEN, command=save_data)
 add_btn.grid(row=4, column=1, columnspan=2, sticky=EW)
 
-#! STANDAR DIALOGS (POP UPS)
-
 window.mainloop()
