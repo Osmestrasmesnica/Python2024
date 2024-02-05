@@ -75,7 +75,7 @@ def count_down(count):
         window.deiconify()  # Unminimize the window
         window.lift()  # Bring the window to the front
         window.attributes("-topmost", 1)  # Make the window always on top of other windows
-        window.after(500, lambda: window.attributes("-topmost", 0)) # Reset "always on top" behavior after 3000 milliseconds (3 seconds)
+        window.after(50, lambda: window.attributes("-topmost", 0)) # Reset "always on top" behavior after 3000 milliseconds (3 seconds)
         window.focus_force()
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -94,7 +94,7 @@ window.config(padx=100, pady=50, bg=YELLOW)
 #! Canvas Widget
 # Place image and text right on top of image
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0) # --> gledamo koliko je slika velika pa prema tome
-tomato_img = PhotoImage(file="Dan_28/tomato.png")
+tomato_img = PhotoImage(file="Dan_28_Tkinter, Dynamic Typing and the Pomodoro GUI/tomato.png") #! PhotoImatge se korisit za skladistenje slika
 canvas.create_image(100, 112, image=tomato_img) # --> pola X, pola Y velicine i mora da se definise PhotoImage koji cita put do fajla koji ima sliku
 #* napomena ako se ostavi x = 100, leva strana slike ce biti malo isecena, jer je pozicija slike suvise na levo, centrirana je na levo, tako da treba da stavimo onda malo vise od 100, tipa 102, ali ako se iskoristi highlightthickness=0 tacno se izgubi tih 2px i onda mozemo da ga vratimo na 100
 timer_text = canvas.create_text(102, 130, text="00:00", font=(FONT_NAME, 24, "bold"), fill=GREEN) 
