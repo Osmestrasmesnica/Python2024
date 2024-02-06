@@ -110,3 +110,8 @@ for post in facebook_posts:
     # pass
 print(total_likes)
 
+
+#! JSON library in python
+# json.dump() wrtie
+# json.load() read
+# json.update() update
