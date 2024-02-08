@@ -10,6 +10,7 @@ FONT_NAME = "Courier New"
 to_learn = {}
 current_card = {}
 words_that_i_know = []
+word_that_i_dont_know = []
 
 try:
     # Pri pokretanju prvo se, ako postoji, otvara words_to_learn.csv
@@ -40,8 +41,8 @@ def next_card():
     canvas.itemconfig(card_bg, image= card_front_bg)
 
     # Delay nakon koga ce se okrenuti karta sa engleskim pa sa srspkim recima
-    flip_timer_eng = window.after(6000, func=flip_card)
-    flip_timer_srb = window.after(9000, func=flip_card_srb)
+    flip_timer_eng = window.after(3000, func=flip_card)
+    flip_timer_srb = window.after(5000, func=flip_card_srb)
 
 
 def flip_card():
@@ -56,18 +57,18 @@ def flip_card_srb():
 
 def is_known():
     """If i know this word, remove it from the list."""
-    
     words_that_i_know.append(current_card)
    
-
-
     to_learn.remove(current_card)
     print(len(to_learn))
 
 
     next_card()
 
-
+def is_unknown():
+    """If i dont know this word, put it to new list."""
+    word_that_i_dont_know.append(current_card)
+    next_card()
  
 def save_files():
     """ Window close callback function"""
@@ -75,9 +76,12 @@ def save_files():
         # List of dict to DataFrame and then create CSV file
         to_learn_df = pd.DataFrame(to_learn)
         to_learn_df.to_csv("Dan_31_Flash_Card_App/data/words_to_learn.csv", index=False, mode="w")
-        # Listo of dict with words that i know
+        # List of dict with words that i know
         wrods_learned_df= pd.DataFrame(words_that_i_know)
         wrods_learned_df.to_csv("Dan_31_Flash_Card_App/data/words_i_learned.csv", index=False, mode="a")
+        # List of dict with words that i dont know
+        wrods_dont_know_df= pd.DataFrame(word_that_i_dont_know)
+        wrods_dont_know_df.to_csv("Dan_31_Flash_Card_App/data/words_i_dont_know.csv", index=False, mode="a")
         window.destroy()
     else:
         window.destroy()
@@ -89,7 +93,7 @@ window.title("NAJČEŠĆE REČI U NEMAČKOM JEZIKU")
 window.config(padx=50, pady=50, background=BACKGROUND_COLOR)
 
 flip_timer_eng = window.after(3000, func=flip_card)
-flip_timer_srb = window.after(6000, func=flip_card_srb)
+flip_timer_srb = window.after(5000, func=flip_card_srb)
 
 canvas = Canvas(height=526, width=800, background=BACKGROUND_COLOR, highlightthickness=0)
 card_front_bg = PhotoImage(file="Dan_31_Flash_Card_App/images/card_front.png")
@@ -108,7 +112,7 @@ btn_right = Button(image=img_right, highlightthickness=0, bg=BACKGROUND_COLOR, a
 btn_right.grid(row=1, column=1)
 
 img_wrong = PhotoImage(file="Dan_31_Flash_Card_App/images/wrong.png")
-btn_wrong = Button(image=img_wrong, highlightthickness=0, bg=BACKGROUND_COLOR, activebackground="red", borderwidth=0, command=next_card)
+btn_wrong = Button(image=img_wrong, highlightthickness=0, bg=BACKGROUND_COLOR, activebackground="red", borderwidth=0, command=is_unknown)
 btn_wrong.grid(row=1, column=0)
 
 #generate initial word
