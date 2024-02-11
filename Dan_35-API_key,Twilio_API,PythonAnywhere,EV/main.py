@@ -36,7 +36,10 @@ response.raise_for_status()
 weather_data = response.json()
 
 # id for weather for first 3 hours of forecast
-# print(weather_data["list"][0]["weather"][0]["id"])
+print(weather_data["list"][0]["weather"][0]["id"])
+print(weather_data["list"][1]["weather"][0]["id"])
+print(weather_data["list"][2]["weather"][0]["id"])
+print(weather_data["list"][3]["weather"][0]["id"])
 
 
 
