@@ -29,7 +29,7 @@ for destination in sheet_data:
             to_time=six_months_from_today
         )
     except Exception as e:
-        print(f"Error processing flight data: {e}")
+        print(f"{flight.destination_city}: {e}")
         continue
     
     if flight and flight.price < destination["lowestPrice"]:
@@ -37,10 +37,10 @@ for destination in sheet_data:
         try:
             notification_manager.send_email(
                 text=text,
-                destination_email="wlq.advisors@gmail.com",
+                # destination_email="wlq.advisors@gmail.com, ankicamilovanovic2@gmail.com",
                 price=flight.price,
                 destination_city=flight.destination_city
             )
             print("Poslato")
         except Exception as e:
-            print(f"Error occurred while sending email: {e}")
+            print(f"{flight.destination_city} - Error occurred while sending email, Verovatno nema direktnog leta ili ima sa vise presedanje do {flight.destination_city}: {e}")
