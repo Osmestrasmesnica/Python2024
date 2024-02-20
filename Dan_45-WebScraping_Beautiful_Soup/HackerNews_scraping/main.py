@@ -23,7 +23,11 @@ for article in soup.find_all(name="td", class_="subtext"):
 
 max_points_index = article_upvotes.index(max(article_upvotes))
 print(
-    f"{article_titles[max_points_index]}, "
-    f"{article_upvotes[max_points_index]} points, "
-    f"available at: {article_links[max_points_index]}."
+    f"{article_titles[max_points_index]} "
+    f"{article_upvotes[max_points_index]} points "
+    f"available at: {article_links[max_points_index]}"
 )
+
+print(len(article_titles))
+print(len(article_upvotes))
+print(len(article_links))
