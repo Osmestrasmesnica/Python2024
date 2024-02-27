@@ -43,6 +43,9 @@ plt.title('Dendrogram za UTM_50x50')
 plt.xlabel('UTM_50x50')
 plt.ylabel('Udaljenost')
 plt.xticks(rotation=90)
+# Sačuvaj dendrogram kao sliku
+dendrogram_path = os.path.join(os.path.dirname(__file__), "dendrogram.png")
+plt.savefig(dendrogram_path)
 plt.show()
 
 # Napravi heatmapu odnosa svih UTM_50x50 i sačuvaj je kao sliku
@@ -60,4 +63,7 @@ sns.heatmap(matrix, annot=True, cmap="YlGnBu", xticklabels=unique_values, ytickl
 plt.title("Heatmapa odnosa svih UTM_50x50")
 plt.xlabel("UTM_50x50")
 plt.ylabel("UTM_50x50")
+# Sačuvaj heatmapu kao sliku
+heatmap_path = os.path.join(os.path.dirname(__file__), "heatmap.png")
+plt.savefig(heatmap_path)
 plt.show()
