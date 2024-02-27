@@ -4,6 +4,7 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 # Učitavanje Excel tabele
 ppath = "Dan_52-Instagram/PhD/floristicka_slicnost_50x50.xlsx"
@@ -44,7 +45,7 @@ plt.ylabel('Udaljenost')
 plt.xticks(rotation=90)
 plt.show()
 
-# Napravi heatmapu odnosa svih UTM_50x50
+# Napravi heatmapu odnosa svih UTM_50x50 i sačuvaj je kao sliku
 matrix = np.zeros((len(unique_values), len(unique_values)))
 for i, utm_value1 in enumerate(unique_values):
     for j, utm_value2 in enumerate(unique_values):
