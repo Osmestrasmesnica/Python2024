@@ -34,6 +34,8 @@ for i, (utm_value1, pun_list1) in enumerate(unique_pun_dict.items()):
         unique_items = set(pun_list1 + pun_list2)
         jaccard_index = len(common_items) / len(unique_items)
         jaccard_indices.append(jaccard_index)
+        # Output Jaccard index for each combination
+        print(f"Jaccard indeks za kombinaciju {utm_value1}, {utm_value2}: {jaccard_index}")
 
 # Napravi dendrogram
 Z = linkage(jaccard_indices, method='average')
@@ -44,8 +46,8 @@ plt.xlabel('UTM_50x50')
 plt.ylabel('Udaljenost')
 plt.xticks(rotation=90)
 # Sačuvaj dendrogram kao sliku
-dendrogram_path = os.path.join(os.path.dirname(__file__), "dendrogram.png")
-plt.savefig(dendrogram_path)
+# dendrogram_path = os.path.join(os.path.dirname(__file__), "dendrogram.png")
+# plt.savefig(dendrogram_path)
 plt.show()
 
 # Napravi heatmapu odnosa svih UTM_50x50 i sačuvaj je kao sliku
@@ -57,6 +59,12 @@ for i, utm_value1 in enumerate(unique_values):
             unique_items = set(unique_pun_dict[utm_value1] + unique_pun_dict[utm_value2])
             jaccard_index = len(common_items) / len(unique_items)
             matrix[i, j] = jaccard_index
+            # Output common items for each combination
+            print(f"Zajednički elementi za kombinaciju {utm_value1}, {utm_value2}: {common_items}")
+            print(f"Konačan broj stavki koje si zajedničke za kombinaciju {utm_value1}, {utm_value2}: {len(common_items)}")
+            # Output final number of non-repeating items for each combination
+            print(f"Konačan broj stavki koji se ne ponavljaju za kombinaciju {utm_value1}, {utm_value2}: {len(unique_items)}")
+            print("----------------------------------------------------")
 
 plt.figure(figsize=(10, 8))
 sns.heatmap(matrix, annot=True, cmap="YlGnBu", xticklabels=unique_values, yticklabels=unique_values)
@@ -64,6 +72,6 @@ plt.title("Heatmapa odnosa svih UTM_50x50")
 plt.xlabel("UTM_50x50")
 plt.ylabel("UTM_50x50")
 # Sačuvaj heatmapu kao sliku
-heatmap_path = os.path.join(os.path.dirname(__file__), "heatmap.png")
-plt.savefig(heatmap_path)
+# heatmap_path = os.path.join(os.path.dirname(__file__), "heatmap.png")
+# plt.savefig(heatmap_path)
 plt.show()
