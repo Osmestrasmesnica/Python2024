@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Coffee and Wifi{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <div class="container">
+  <h1 class="display-4">☕️ Ankin & Lekin izbor restorana 💻</h1>
+  <p class="lead">Hoćete da popijete kvalitetnu kafu dok vam se punu auto/telefon ili Vam treba WiFi?</p>
+  <hr class="my-4">
+  <p>Na pravom ste mestu! Ocenjujemo kvalitet kafe, jačinu WiFI mreže i blizinu punjača za telefon/auto.</p>
+  <a class="btn btn-warning btn-lg" href="{{ url_for('cafes') }}" role="button">Prikaži!</a>
+</div>
+    </div>
+
+{% endblock %}
