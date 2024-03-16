@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Book</title>
+    {% from 'bootstrap4/form.html' import render_form %}
+  </head>
+  <body>
+
+      <!-- This is where your WTForm will go -->
+      {{ render_form(form, novalidate=True) }}
+
+    </form>
+  </body>
+</html>
