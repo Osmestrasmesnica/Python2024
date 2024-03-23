@@ -61,6 +61,7 @@ db.init_app(app)
 
 # CONFIGURE TABLE
 class BlogPost(db.Model):
+    __tablename__ = "blog_posts"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     title: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
     subtitle: Mapped[str] = mapped_column(String(250), nullable=False)
@@ -72,10 +73,11 @@ class BlogPost(db.Model):
 
 with app.app_context():
     db.create_all()
+    
 godina = date.today().year
 print(godina)
 
-##WTForm
+##WTForm ovo moze da stoji i u posebnom .py pa da se importuje
 class NewBlog(FlaskForm):
     title = StringField("Blog Title", validators=[DataRequired()])
     subtitle = StringField("Blog Subtitle", validators=[DataRequired()])
