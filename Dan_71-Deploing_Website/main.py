@@ -42,7 +42,8 @@ os.makedirs(db_dir, exist_ok=True)
 # CREATE DATABASE
 class Base(DeclarativeBase):
     pass
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(db_dir, 'posts.db')}"
+# app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(db_dir, 'posts.db')}"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", f"sqlite:///{os.path.join(db_dir, 'posts.db')}")
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
