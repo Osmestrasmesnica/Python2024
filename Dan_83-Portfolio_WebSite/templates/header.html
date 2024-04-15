@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>WLQ Blog</title>
+  <title>WLQ Portfolio</title>
   {% block styles %}
   <!-- Load Bootstrap-Flask CSS here -->
   {{ bootstrap.load_css() }}
@@ -37,21 +37,14 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto py-4 py-lg-0">
           <li class="nav-item">
-            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('get_all_posts') }}">Home</a>
-          </li>
-          <!-- TODO: Only show Login/Register if user is logged out. Otherwise show "Log Out" -->
-          {% if not logged_in: %}
-          <li class="nav-item">
-            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('login') }}">Login</a>
+            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('home') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('register') }}">Register</a>
+            <a class="nav-link px-lg-3 py-3 py-lg-4" href="">Projects</a>
           </li>
-          {% else %}
           <li class="nav-item">
-            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('logout') }}">Log Out</a>
+            <a class="nav-link px-lg-3 py-3 py-lg-4" href="https://python2024.onrender.com/">Blog</a>
           </li>
-          {% endif %}
           <li class="nav-item">
             <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('about') }}">About</a>
           </li>
